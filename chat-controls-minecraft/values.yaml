@@ -1,0 +1,17 @@
+replicaCount: 1
+
+image:
+  repository: "justcallmekoko/chatcontrolsminecraft"
+  pullPolicy: IfNotPresent
+  tag: "latest"
+
+twitchtoken: oauth
+apitoken: twitchapitoken
+clientid: clientidtoken
+nick: "twitchusername"
+prefix: "commandprefix"
+initialchannels: "twitchchannelname"
+hostuser: "minecraftusername"
+rconip: "127.0.0.1"
+rconport: 25575
+rconpassword: "rconpassword"

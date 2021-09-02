@@ -1,0 +1,40 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: chat-controls-minecraft
+  labels:
+    app: chat-controls-minecraft
+spec:
+  replicas: {{ .Values.replicaCount }}
+  selector:
+    matchLabels:
+      app: chat-controls-minecraft
+  template:
+    metadata:
+      labels:
+        app: chat-controls-minecraft
+    spec:
+      containers:
+        - name: chat-controls-minecraft-container
+          image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
+          env:
+          - name: TWITCH_TOKEN
+            value: {{ .Values.twitchtoken }}
+          - name: API_TOKEN
+            value: {{ .Values.apitoken }}
+          - name: CLIENT_ID
+            value: {{ .Values.clientid }}
+          - name: NICK
+            value: "{{ .Values.nick }}"
+          - name: PREFIX
+            value: "{{ .Values.prefix }}"
+          - name: INITIAL_CHANNELS
+            value: "{{ .Values.initialchannels }}"
+          - name: HOST_USER
+            value: "{{ .Values.hostuser }}"
+          - name: RCON_IP
+            value: "{{ .Values.rconip }}"
+          - name: RCON_PORT
+            value: "{{ .Values.rconport }}"
+          - name: RCON_PASSWORD
+            value: "{{ .Values.rconpassword }}"
